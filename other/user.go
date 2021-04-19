@@ -71,46 +71,51 @@ func main() {
 	}
 
 	fmt.Println("=========start put data=========")
-	var choose int
-	fmt.Println("选择功能:1、注册,2、登录,3、修改密码,4、创建新账户")
-	fmt.Scan(&choose)
-	switch choose {
-	case 1:
-		var id uint8
-		var password string
-		var _password string
-		fmt.Println("请输入id")
-		fmt.Scan(&id)
-		fmt.Println("请输入密码")
-		fmt.Scan(&password)
-		fmt.Println("请再次输入密码")
-		fmt.Scan(&_password)
-		token.regis(auth, id, password, _password)
-	case 2:
-		var id uint8
-		var password string
-		fmt.Println("请输入id")
-		fmt.Scan(&id)
-		fmt.Println("请输入密码")
-		fmt.Scan(&password)
-		token.logs(auth, id, password)
-	case 3:
-		var id uint8
-		var password string
-		var _password string
-		fmt.Println("请输入id")
-		fmt.Scan(&id)
-		fmt.Println("请输入原密码")
-		fmt.Scan(&password)
-		fmt.Println("请输入新密码")
-		fmt.Scan(&_password)
-		token.setPass(auth, id, password, _password)
-	case 4:
-		var pass string
-		fmt.Println("请输入密码")
-		fmt.Scan(&pass)
-
-		newAccount(pass)
+	flag := true
+	for flag {
+		var choose int
+		fmt.Println("选择功能:1、注册,2、登录,3、修改密码,4、创建新账户,5、退出")
+		fmt.Scan(&choose)
+		switch choose {
+		case 1:
+			var id uint8
+			var password string
+			var _password string
+			fmt.Println("请输入id")
+			fmt.Scan(&id)
+			fmt.Println("请输入密码")
+			fmt.Scan(&password)
+			fmt.Println("请再次输入密码")
+			fmt.Scan(&_password)
+			token.regis(auth, id, password, _password)
+		case 2:
+			var id uint8
+			var password string
+			fmt.Println("请输入id")
+			fmt.Scan(&id)
+			fmt.Println("请输入密码")
+			fmt.Scan(&password)
+			token.logs(auth, id, password)
+		case 3:
+			var id uint8
+			var password string
+			var _password string
+			fmt.Println("请输入id")
+			fmt.Scan(&id)
+			fmt.Println("请输入原密码")
+			fmt.Scan(&password)
+			fmt.Println("请输入新密码")
+			fmt.Scan(&_password)
+			token.setPass(auth, id, password, _password)
+		case 4:
+			var pass string
+			fmt.Println("请输入密码")
+			fmt.Scan(&pass)
+			newAccount(pass)
+		case 5:
+			fmt.Println("已退出")
+			flag = false
+		}
 	}
 
 	fmt.Println("put data to smart contract success!")
